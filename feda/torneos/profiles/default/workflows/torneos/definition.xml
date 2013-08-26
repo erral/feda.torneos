@@ -125,56 +125,56 @@
   <permission-map name="View" acquired="True">
   </permission-map>
  </state>
- <transition transition_id="aceptar-informe" title="Aceptar informe" new_state="informe-pendiente" trigger="USER">
+ <transition transition_id="aceptar-informe" title="Aceptar informe" new_state="informe-pendiente" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=aceptar-informe" category="workflow" icon="">Aceptar informe</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="aceptar-registro" title="Aceptar Registro" new_state="registrado" trigger="USER">
+ <transition transition_id="aceptar-registro" title="Aceptar Registro" new_state="registrado" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=aceptar-registro" category="workflow" icon="">Aceptar Registro</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="aceptar-registro-y-enviar-a-feda" title="Aceptar registro y enviar a FEDA" new_state="registro-feda" trigger="USER">
+ <transition transition_id="aceptar-registro-y-enviar-a-feda" title="Aceptar registro y enviar a FEDA" new_state="registro-feda" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=aceptar-registro-y-enviar-a-feda" category="workflow" icon="">Aceptar registro y enviar a FEDA</action>
   <guard>
    <guard-role>FFAA</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-a-ffaa" title="Enviar registro a FFAA" new_state="registro-autona3mico" trigger="USER">
+ <transition transition_id="enviar-a-ffaa" title="Enviar registro a FFAA" new_state="registro-autona3mico" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-a-ffaa" category="workflow" icon="">Enviar a FFAA</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>Arbitro</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-informe-a-feda" title="Enviar informe a FEDA" new_state="informe-feda" trigger="USER">
+ <transition transition_id="enviar-informe-a-feda" title="Enviar informe a FEDA" new_state="informe-feda" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-a-feda" category="workflow" icon="">Enviar informe a FEDA</action>
   <guard>
    <guard-role>FFAA</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-informe-a-fide" title="Enviar informe a FIDE" new_state="enviado-a-fide" trigger="USER">
+ <transition transition_id="enviar-informe-a-fide" title="Enviar informe a FIDE" new_state="enviado-a-fide" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-a-fide" category="workflow" icon="">Enviar informe a FIDE</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-informe-corregido" title="Enviar informe corregido" new_state="informe-feda" trigger="USER">
+ <transition transition_id="enviar-informe-corregido" title="Enviar informe corregido" new_state="informe-feda" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-corregido" category="workflow" icon="">Enviar informe corregido</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>Arbitro</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-informe-ffaa" title="Enviar informe FFAA" new_state="informe-autona3mico" trigger="USER">
+ <transition transition_id="enviar-informe-ffaa" title="Enviar informe FFAA" new_state="informe-autona3mico" trigger="USER" before_script="" after_script="">
   <description>Enviar el informe a la FFAA</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-ffaa" category="workflow" icon="">Enviar informe a FFAA</action>
   <guard>
@@ -182,42 +182,42 @@
    <guard-role>Arbitro</guard-role>
   </guard>
  </transition>
- <transition transition_id="rechazar-informe" title="Rechazar informe" new_state="informe-rechazado" trigger="USER">
+ <transition transition_id="rechazar-informe" title="Rechazar informe" new_state="informe-rechazado" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-informe" category="workflow" icon="">Rechazar informe</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="rechazar-informe-ffaa" title="Rechazar informe FFAA" new_state="torneo-jugado-informe-pendiente" trigger="USER">
+ <transition transition_id="rechazar-informe-ffaa" title="Rechazar informe FFAA" new_state="torneo-jugado-informe-pendiente" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-informe-ffaa" category="workflow" icon="">Rechazar informe FFAA</action>
   <guard>
    <guard-role>FFAA</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="rechazar-registro" title="Rechazar registro" new_state="inicio" trigger="USER">
+ <transition transition_id="rechazar-registro" title="Rechazar registro" new_state="inicio" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro" category="workflow" icon="">Rechazar registro y devolver al árbitro</action>
   <guard>
    <guard-role>FFAA</guard-role>
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="rechazar-registro-arbitro" title="Rechazar registro Arbitro" new_state="inicio" trigger="USER">
+ <transition transition_id="rechazar-registro-arbitro" title="Rechazar registro Arbitro" new_state="inicio" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro-arbitro" category="workflow" icon="">Rechazar registro y devolver al Árbitro</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="rechazar-registro-ffaa" title="Rechazar registro FFAA" new_state="registro-autona3mico" trigger="USER">
+ <transition transition_id="rechazar-registro-ffaa" title="Rechazar registro FFAA" new_state="registro-autona3mico" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro-ffaa" category="workflow" icon="">Rechazar registro y devolver a FFAA</action>
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="torneo-jugado" title="Torneo jugado" new_state="torneo-jugado-informe-pendiente" trigger="USER">
+ <transition transition_id="torneo-jugado" title="Torneo jugado" new_state="torneo-jugado-informe-pendiente" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=torneo-jugado" category="workflow" icon="">Torneo jugado</action>
   <guard>
    <guard-role>Manager</guard-role>
@@ -234,7 +234,7 @@
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>
-   
+
    <expression>transition/getId|nothing</expression>
   </default>
   <guard>
@@ -243,7 +243,7 @@
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
   <description>The ID of the user who performed the previous transition</description>
   <default>
-   
+
    <expression>user/getId</expression>
   </default>
   <guard>
@@ -252,7 +252,7 @@
  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
   <description>Comment about the last transition</description>
   <default>
-   
+
    <expression>python:state_change.kwargs.get('comment', '')</expression>
   </default>
   <guard>
@@ -261,7 +261,7 @@
  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
   <description>Provides access to workflow history</description>
   <default>
-   
+
    <expression>state_change/getHistory</expression>
   </default>
   <guard>
@@ -272,7 +272,7 @@
  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
   <description>When the previous transition was performed</description>
   <default>
-   
+
    <expression>state_change/getDateTime</expression>
   </default>
   <guard>
