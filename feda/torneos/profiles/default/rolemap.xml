@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <rolemap>
+  <roles>
+    <role name="Arbitro"/>
+    <role name="FEDA"/>
+    <role name="FFAA"/>
+  </roles>
   <permissions>
     <!-- -*- extra stuff goes here -*- -->
     <permission name="feda.torneos: Add Torneo" acquire="False">
+      <role name="Arbitro" />
       <role name="Manager" />
-      <role name="Site Administrator" /> 
-      <role name="Contributor" />      
     </permission>
   </permissions>
 </rolemap>
