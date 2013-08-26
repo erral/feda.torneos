@@ -1,0 +1,51 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="feda.torneos">
+
+
+   <adapter
+       for=".torneo.ITorneo"
+       provides="plone.stringinterp.interfaces.IStringSubstitution"
+       factory=".interpolators.DateStartSubstitution"
+       name="date_start"
+       />
+
+   <adapter
+       for=".torneo.ITorneo"
+       provides="plone.stringinterp.interfaces.IStringSubstitution"
+       factory=".interpolators.DateEndSubstitution"
+       name="date_end"
+       />
+
+   <adapter
+       for=".torneo.ITorneo"
+       provides="plone.stringinterp.interfaces.IStringSubstitution"
+       factory=".interpolators.SystemSubstitution"
+       name="system"
+       />
+
+   <adapter
+       for=".torneo.ITorneo"
+       provides="plone.stringinterp.interfaces.IStringSubstitution"
+       factory=".interpolators.CitySubstitution"
+       name="city"
+       />
+
+
+   <adapter
+       for=".torneo.ITorneo"
+       provides="plone.stringinterp.interfaces.IStringSubstitution"
+       factory=".interpolators.CASubstitution"
+       name="chief_arbiter"
+       />
+
+
+   <adapter
+       for=".torneo.ITorneo"
+       provides="plone.stringinterp.interfaces.IStringSubstitution"
+       factory=".interpolators.RatingTypeSubstitution"
+       name="rating_type"
+       />
+
+
+</configure>

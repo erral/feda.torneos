@@ -11,7 +11,9 @@
   <includeDependencies package="." />
 
   <include file="permissions.zcml" />
+  <include file="interpolators.zcml" />
   <include package=".browser" />
+  <adapter factory=".mailadapter.EnviarAFFAA" />
 
   <!-- Grok the package to initialise schema interfaces and content classes -->
   <grok:grok package="." />
