@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="torneos" title="Torneos" description=" - Simple workflow that is useful for basic web sites. - Things start out as private, and can either be submitted for review, or published directly. - The creator of a content item can edit the item even after it is published." state_variable="review_state" initial_state="inicio" manager_bypass="False">
+ <permission>Access contents information</permission>
+ <permission>Change portal events</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="enviado-a-fide" title="Enviado a FIDE">
+  <description>El torneo se ha enviado a la FIDE</description>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="informe-autona3mico" title="Informe Autonomico">
+  <description>Se ha enviado el informe y está a la espera del Ok de la Federación Autonómica</description>
+  <exit-transition transition_id="enviar-informe-a-feda"/>
+  <exit-transition transition_id="rechazar-informe-ffaa"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="informe-feda" title="Informe FEDA">
+  <description>El torneo está en la FEDA preparado para evaluarse</description>
+  <exit-transition transition_id="rechazar-informe"/>
+  <exit-transition transition_id="aceptar-informe"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="informe-pendiente" title="Informe pendiente">
+  <exit-transition transition_id="enviar-informe-a-fide"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="informe-rechazado" title="Informe rechazado">
+  <exit-transition transition_id="enviar-informe-corregido"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="inicio" title="Inicio">
+  <description>Estado inicial en el que se crean todos los torneos</description>
+  <exit-transition transition_id="enviar-a-ffaa"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="registrado" title="Registrado">
+  <description>El torneo está registrado, preparado para recibir el informe</description>
+  <exit-transition transition_id="torneo-jugado"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="registro-autona3mico" title="Registro Autonomico">
+  <description>Estado en el que las FFAA revisan el registro del torneo</description>
+  <exit-transition transition_id="aceptar-registro-y-enviar-a-feda"/>
+  <exit-transition transition_id="rechazar-registro"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="registro-feda" title="Registro FEDA">
+  <description>El torneo está preparado para registrarse en FEDA</description>
+  <exit-transition transition_id="aceptar-registro"/>
+  <exit-transition transition_id="rechazar-registro-ffaa"/>
+  <exit-transition transition_id="rechazar-registro-arbitro"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="torneo-jugado-informe-pendiente" title="Torneo jugado (informe pendiente)">
+  <exit-transition transition_id="enviar-informe-ffaa"/>
+  <permission-map name="Access contents information" acquired="True">
+  </permission-map>
+  <permission-map name="Change portal events" acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <transition transition_id="aceptar-informe" title="Aceptar informe" new_state="informe-pendiente" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=aceptar-informe" category="workflow" icon="">Aceptar informe</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>FEDA</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="aceptar-registro" title="Aceptar Registro" new_state="registrado" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=aceptar-registro" category="workflow" icon="">Aceptar Registro</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>FEDA</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="aceptar-registro-y-enviar-a-feda" title="Aceptar registro y enviar a FEDA" new_state="registro-feda" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=aceptar-registro-y-enviar-a-feda" category="workflow" icon="">Aceptar registro y enviar a FEDA</action>
+  <guard>
+   <guard-role>FFAA</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="enviar-a-ffaa" title="Enviar registro a FFAA" new_state="registro-autona3mico" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=enviar-a-ffaa" category="workflow" icon="">Enviar a FFAA</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Arbitro</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="enviar-informe-a-feda" title="Enviar informe a FEDA" new_state="informe-feda" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-a-feda" category="workflow" icon="">Enviar informe a FEDA</action>
+  <guard>
+   <guard-role>FFAA</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="enviar-informe-a-fide" title="Enviar informe a FIDE" new_state="enviado-a-fide" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-a-fide" category="workflow" icon="">Enviar informe a FIDE</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>FEDA</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="enviar-informe-corregido" title="Enviar informe corregido" new_state="informe-feda" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-corregido" category="workflow" icon="">Enviar informe corregido</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Arbitro</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="enviar-informe-ffaa" title="Enviar informe FFAA" new_state="informe-autona3mico" trigger="USER">
+  <description>Enviar el informe a la FFAA</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-ffaa" category="workflow" icon="">Enviar informe a FFAA</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>Arbitro</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="rechazar-informe" title="Rechazar informe" new_state="informe-rechazado" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-informe" category="workflow" icon="">Rechazar informe</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>FEDA</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="rechazar-informe-ffaa" title="Rechazar informe FFAA" new_state="torneo-jugado-informe-pendiente" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-informe-ffaa" category="workflow" icon="">Rechazar informe FFAA</action>
+  <guard>
+   <guard-role>FFAA</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="rechazar-registro" title="Rechazar registro" new_state="inicio" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro" category="workflow" icon="">Rechazar registro y devolver al árbitro</action>
+  <guard>
+   <guard-role>FFAA</guard-role>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="rechazar-registro-arbitro" title="Rechazar registro Arbitro" new_state="inicio" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro-arbitro" category="workflow" icon="">Rechazar registro y devolver al Árbitro</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>FEDA</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="rechazar-registro-ffaa" title="Rechazar registro FFAA" new_state="registro-autona3mico" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro-ffaa" category="workflow" icon="">Rechazar registro y devolver a FFAA</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>FEDA</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="torneo-jugado" title="Torneo jugado" new_state="torneo-jugado-informe-pendiente" trigger="USER">
+  <action url="%(content_url)s/content_status_modify?workflow_action=torneo-jugado" category="workflow" icon="">Torneo jugado</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
