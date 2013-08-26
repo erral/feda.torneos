@@ -5,8 +5,8 @@ version = '1.0'
 
 setup(name='feda.torneos',
       version=version,
-      description="Example Dexterity Product",
-      long_description=open("README.txt").read() + "\n" +
+      description="Content-types for tournament handling in Spanish Chess Federation",
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -16,9 +16,9 @@ setup(name='feda.torneos',
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      author='Mikel Larreategi',
+      author_email='larreategi@eibar.org',
+      url='https://github.com/erral/feda.torneos',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['feda'],
