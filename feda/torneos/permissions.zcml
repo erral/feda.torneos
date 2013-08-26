@@ -5,5 +5,11 @@
 
     
       <!-- -*- extra stuff goes here -*- -->
+       <permission
+          id="feda.torneos.AddTorneo"
+	  title="feda.torneos: Add Torneo"
+	  />       
+
+
 
 </configure>
