@@ -26,9 +26,9 @@ setup(name='feda.torneos',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'five.grok',
-          'plone.app.dexterity [grok, relations]',
+          'plone.app.dexterity [relations]',
           'plone.namedfile [blobs]',
+          'plone.app.workflowmanager'
           # -*- Extra requirements: -*-
       ],
       entry_points="""

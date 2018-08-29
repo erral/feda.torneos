@@ -15,7 +15,7 @@
   <permission-map name="View" acquired="True">
   </permission-map>
  </state>
- <state state_id="informe-autona3mico" title="Informe Autonomico">
+ <state state_id="informe-autonomico" title="Informe Autonomico">
   <description>Se ha enviado el informe y está a la espera del Ok de la Federación Autonómica</description>
   <exit-transition transition_id="enviar-informe-a-feda"/>
   <exit-transition transition_id="rechazar-informe-ffaa"/>
@@ -87,7 +87,7 @@
   <permission-map name="View" acquired="True">
   </permission-map>
  </state>
- <state state_id="registro-autona3mico" title="Registro Autonomico">
+ <state state_id="registro-autonomico" title="Registro Autonomico">
   <description>Estado en el que las FFAA revisan el registro del torneo</description>
   <exit-transition transition_id="aceptar-registro-y-enviar-a-feda"/>
   <exit-transition transition_id="rechazar-registro"/>
@@ -146,7 +146,7 @@
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-a-ffaa" title="Enviar registro a FFAA" new_state="registro-autona3mico" trigger="USER" before_script="" after_script="">
+ <transition transition_id="enviar-a-ffaa" title="Enviar registro a FFAA" new_state="registro-autonomico" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-a-ffaa" category="workflow" icon="">Enviar a FFAA</action>
   <guard>
    <guard-role>Manager</guard-role>
@@ -174,7 +174,7 @@
    <guard-role>Arbitro</guard-role>
   </guard>
  </transition>
- <transition transition_id="enviar-informe-ffaa" title="Enviar informe FFAA" new_state="informe-autona3mico" trigger="USER" before_script="" after_script="">
+ <transition transition_id="enviar-informe-ffaa" title="Enviar informe FFAA" new_state="informe-autonomico" trigger="USER" before_script="" after_script="">
   <description>Enviar el informe a la FFAA</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=enviar-informe-ffaa" category="workflow" icon="">Enviar informe a FFAA</action>
   <guard>
@@ -210,7 +210,7 @@
    <guard-role>FEDA</guard-role>
   </guard>
  </transition>
- <transition transition_id="rechazar-registro-ffaa" title="Rechazar registro FFAA" new_state="registro-autona3mico" trigger="USER" before_script="" after_script="">
+ <transition transition_id="rechazar-registro-ffaa" title="Rechazar registro FFAA" new_state="registro-autonomico" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=rechazar-registro-ffaa" category="workflow" icon="">Rechazar registro y devolver a FFAA</action>
   <guard>
    <guard-role>Manager</guard-role>

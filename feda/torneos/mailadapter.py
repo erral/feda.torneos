@@ -20,7 +20,7 @@ class EnviarAFFAA(object):
         current_user = api.user.get_current()
         emails = [current_user.getProperty('email')]
 
-        if state == 'registro-autona3mico':
+        if state == 'registro-autonomico':
             emails.append('larreategi+euskadi@gmail.com')
 
         return emails
